@@ -38,5 +38,12 @@
 			
 7.  .cat 文件名称		查看文件内容
 
-8.  .git checkout --file  丢弃工作区的修改
+8.  工作区修改丢弃
+	.git checkout --file  丢弃工作区的修改
+	
+9. 缓存区修改丢弃
+	.git reset HEAD file
+	
+	
+
 		

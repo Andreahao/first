@@ -18,4 +18,9 @@
 					<2> $ git status 再次查看文件状态
 					<3> $ git commit -m '提交说明'
 
-	
+4. 版本回退
+	a. $ git log 查看提交历史
+	b. $ git log --pretty=onelone 查看提交历史版本的id
+	c. $ git reset --hard HEAD^ 回退到上一版本（windows7 64位HEAD^^表示回退到上一版本。）HEAD~100回退到前100版本
+	d. 继续回退到未回退版本
+		$ git reset --hard 版本号（版本号不需要全写，前几位就好）

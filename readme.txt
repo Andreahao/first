@@ -24,3 +24,5 @@
 	c. $ git reset --hard HEAD^ 回退到上一版本（windows7 64位HEAD^^表示回退到上一版本。）HEAD~100回退到前100版本
 	d. 回退到某一版本
 		$ git reset --hard 版本号（版本号不需要全写，前几位就好）
+5. 查找之前的命令
+	$ git reflog

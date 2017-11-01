@@ -36,3 +36,5 @@
 		<2>git创建的第一个分支master；
 		<3>创建指向master的指针HEAD	
 		
+		测试
+		

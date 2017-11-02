@@ -95,6 +95,7 @@
 	
 	
 这是分支dev2写的内容
+这是master内容：creating a new branch is quick and simple
 	
 	
 		

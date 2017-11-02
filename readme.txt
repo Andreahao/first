@@ -1,7 +1,10 @@
+本地仓库
+
 1.创建git仓库
 	a. 在空目录下，cmd命令  $ mkdir learngit
 							$ cd learngit
 							$ pwd(pwd用于显示当前文件的目录)
+							
 	b. git init 命令把这个目录变成git可管理的仓库
 							$ git init
 
@@ -39,11 +42,49 @@
 7.  .cat 文件名称		查看文件内容
 
 8.  工作区修改丢弃
-	.git checkout --file  丢弃工作区的修改
+	.git checkout file  丢弃工作区的修改
 	
 9. 缓存区修改丢弃
 	.git reset HEAD file
 	
+10. 删除文件(版本区)
+	a. $ .git rm file
+	b. $ .git commit -m '描述'
 	
+11. 误删文件，版本库中还有文件，恢复到最新版本
+	git checkout -- file
+	
+	
+远程仓库
+1. 创建SSH Key
+	SSH,主要用于计算机间加密传输，取代传统的远程登录和远程执行命令工具，实现对远程登录和远程执行命令加密，防止由于网络监听而密码泄露。
+	SSH协议是IETF(Internet Engineering Task Force)的Network Working Group所制定的一种协议。
+	
+	a. 创建SSH Key使用 Git Bash(power shell的一种，window7 自带，若没有需下载，前提是安装.net 4)
+	b. $ ssh-keygen -t rsa -c "邮箱地址"
+	
+	即可在用户主目录user/admine下找到.shll 目录，目录中id_rsa是私钥、id_rsa.pub是公钥。
+	
+	c. github账户-->settings-->SSH Key-->将id_rsa.pub复制粘贴内容区-->添加SSH成功。
 
+2. 本地git仓库与github远程仓库关联
+	本地仓库运行命令 $ git remote add origin git@github.com:@Andreahao/learngit.git
+	注意：如果报错，fatal:remote origin already exists.
+	(
+		<1>先输入 $ git remote rm origin
+		<2>再输入 $ git remote add
+		<3>再次链接即可
+	)
+	
+3. 本地库内容推送到远程库
+	$ git push -u origin maser
+		(第一次推送master分支时，加上了-u参数，git不但会把本地的master分支内容推送给远程新的master分支，还会把本地master分支与远程的master分支关联起来。以后推送便不需)
 		
+4. 从远程库克隆
+	找一仓库区，克隆并建本地库 $ git clone git@github.com:Andreahao/hello-word.git
+	
+分支
+	1. 创建分支,并切换到分支
+			$ git checkout -b dev
+		
+	

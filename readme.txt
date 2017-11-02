@@ -39,7 +39,7 @@
 		<2>git创建的第一个分支master；
 		<3>创建指向master的指针HEAD	
 			
-7.  .cat 文件名称		查看文件内容
+7.  cat 文件名称		查看文件内容
 
 8.  工作区修改丢弃
 	.git checkout file  丢弃工作区的修改
@@ -86,5 +86,10 @@
 分支
 	1. 创建分支,并切换到分支
 			$ git checkout -b dev
+			（git checkout -b 表示，创建并切换。相当于，git branch dev 和 git checjout dev）
+	2. 查看分支
+			$ git branch(显示全部的分支，当前分支前面有星号*)
+	
+	
 		
 	

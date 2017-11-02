@@ -89,6 +89,9 @@
 			（git checkout -b 表示，创建并切换。相当于，git branch dev 和 git checjout dev）
 	2. 查看分支
 			$ git branch(显示全部的分支，当前分支前面有星号*)
+			
+	dev分支：修改内容-->git add file(添加到缓存区，index文件中)-->git commit -m '备注'（提交到dev分支）-->切换到master分支（git branch master）-->
+			git merge dev(将dev分支拉到master分支)
 	
 	
 		

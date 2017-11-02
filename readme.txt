@@ -94,5 +94,8 @@
 			git merge dev(将dev分支拉到master分支)
 	
 	
+这是分支dev2写的内容
+	
+	
 		
 	

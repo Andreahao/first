@@ -94,12 +94,5 @@
 			git merge dev(将dev分支拉到master分支)
 	
 	
-这是分支dev2写的内容
-这是master内容：creating a new branch is quick and simple
-	
-	
-		
-	
-
-这是dev修改的内容，master再次修改
+	查看分支合并情况：git log --graph
 

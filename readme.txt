@@ -93,6 +93,11 @@
 	dev分支：修改内容-->git add file(添加到缓存区，index文件中)-->git commit -m '备注'（提交到dev分支）-->切换到master分支（git branch master）-->
 			git merge dev(将dev分支拉到master分支)
 	
-	
+	（修复bug-01）
 	查看分支合并情况：git log --graph
-
+	
+	bug分支：<1>将正在进行的修改“储藏”起来。$ git stash
+				($ git status查看修改文件有修改，$ git stash后，再$ git shatus，工作区是干净的没有修改内容，是因为把内容放在某个地方了)
+			 <2>切换到有bug分支，在此分支新建一个修复bug的分支issue-01并切换，修复bug后提交到bug分支，切换到master将修复bug后的dev拉到master。
+			 <3>找回原先暂存的内容
+				

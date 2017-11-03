@@ -100,4 +100,4 @@
 				($ git status查看修改文件有修改，$ git stash后，再$ git shatus，工作区是干净的没有修改内容，是因为把内容放在某个地方了)
 			 <2>切换到有bug分支，在此分支新建一个修复bug的分支issue-01并切换，修复bug后提交到bug分支，切换到master将修复bug后的dev拉到master。
 			 <3>找回原先暂存的内容
-				
+				反反复复

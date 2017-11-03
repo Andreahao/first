@@ -83,6 +83,8 @@
 4. 从远程库克隆
 	找一仓库区，克隆并建本地库 $ git clone git@github.com:Andreahao/hello-word.git
 	
+	
+	
 分支
 	1. 创建分支,并切换到分支
 			$ git checkout -b dev
@@ -107,3 +109,8 @@
 	
 	feature分支：开发新功能时，创建一个开发此功能的分支，开发完毕则提交。若采取此功能则合并。若取消即要取消合并销毁修改若$ git branch -d 新分支，
 				报错提示没有合并，如果删除将丢失修改。强行删除$ git branch -D 新分支。删除成功。
+				
+多人协作				
+查看远程信息
+	$ git remote
+	(查看详细信息 $ git remote -v)

@@ -100,4 +100,10 @@
 				($ git status查看修改文件有修改，$ git stash后，再$ git shatus，工作区是干净的没有修改内容，是因为把内容放在某个地方了)
 			 <2>切换到有bug分支，在此分支新建一个修复bug的分支issue-01并切换，修复bug后提交到bug分支，切换到master将修复bug后的dev拉到master。
 			 <3>找回原先暂存的内容
-				反反复复
+				（1）查看暂存内容：$ git stash list
+				（2）恢复工作现场：$ git stash apply
+				（3）删除stash内容：$ git stash drop
+				（2-2）第2、3步可以合并为： $ git stash pop 恢复工作区的同时把stash内容删除。
+	
+	feature分支：开发新功能时，创建一个开发此功能的分支，开发完毕则提交。若采取此功能则合并。若取消即要取消合并销毁修改若$ git branch -d 新分支，
+				报错提示没有合并，如果删除将丢失修改。强行删除$ git branch -D 新分支。删除成功。

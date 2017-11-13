@@ -35,16 +35,25 @@
 	Node集成开发环境Visual Studio Code。使用教程，https://code.visualstudio.com/docs/getstarted/introvideos
 	
 模块
+ 
+ 优点：
 	把函数分组，放在不同的文件中。
 	a. 提高代码可维护性
 	b. 不必重写，方便引用
 	c. 命名冲突减少
 	一个.js文件就是一个模块。模块名就是文件名（去掉.js）
-	
+ 引用：	
 	被引用模块hello的hello.js文件:
 						function 函数名（）{}；
-						module.exports=函数名;   （把函数作为模块的输出暴露出去，以便其他模块使用）
+						module.exports=函数名（函数也是变量）;   （把函数作为模块的输出暴露出去，以便其他模块使用）
 		
 	引用hello模块的use.js文件：
-						var m=require('hello')  （引入hello模块，并存入m变量中，m变量即hello模块中暴露的函数）
+						var m=require('./hello')  
+						（引入hello模块，并存入m变量中，m变量即hello模块中暴露的函数.引用模块注意相对路径。若只写模块名，node会一次在内置模块、全局模块和当前模块下查找hello.js）
 						使用调用模块中的函数；
+						
+	这种模块加载机制被称为CommonJS规范。
+			模块化：这一规范下，每一个js文件都是一个模块。Node.js加载.js文件后，将代码包装成闭包。这样，原来的全局变量变成匿名函数内部的聚币变量。使得模块中的变量互不干扰。
+			模块输出：
+	
+						

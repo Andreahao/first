@@ -1,3 +1,5 @@
+简介
+
 1.npm
 	在node.js上开发，会用到很多别人的代码。
 	如果要是用别人写的某个包，没辞根据名称搜索官网，下载代码，解压，再使用，很繁琐。
@@ -26,4 +28,23 @@
 		例如：Node交互模式下，100+200+300，输出，600
 				但运行（100+200+300）calc.js文件，不会输入任何内容。要想输出结果，必须console.log（）
 				
+
+搭建Node开发环境
+
+	使用文本编辑器开发Node程序，最大的缺点就是效率低。运行程序还需在命令行单独敲运行命令。
+	Node集成开发环境Visual Studio Code。使用教程，https://code.visualstudio.com/docs/getstarted/introvideos
+	
+模块
+	把函数分组，放在不同的文件中。
+	a. 提高代码可维护性
+	b. 不必重写，方便引用
+	c. 命名冲突减少
+	一个.js文件就是一个模块。模块名就是文件名（去掉.js）
+	
+	被引用模块hello的hello.js文件:
+						function 函数名（）{}；
+						module.exports=函数名;   （把函数作为模块的输出暴露出去，以便其他模块使用）
 		
+	引用hello模块的use.js文件：
+						var m=require('hello')  （引入hello模块，并存入m变量中，m变量即hello模块中暴露的函数）
+						使用调用模块中的函数；

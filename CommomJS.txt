@@ -1,0 +1,152 @@
+模块规范：
+
+	有了模块，可以更方便的使用别人的代码，想要什么功能就加载什么模块。
+
+	通行的javascript模块规范有两种：CommonJS和AMD
+
+	2009年，美国程序员Ryan Dahl创造了node.js项目，将javascript语言用于服务器端编程。
+
+	在浏览器环境下，没有模块也没有问题，因为网页程序的复杂性有限；但是在服务器端，与操作系统和其他程序互动，一定要有模块，否则根本没有办法编程。
+
+CommonJS:
+
+	Node.js模块系统，参照CommonJS规范实现。
+
+	CommonJS中，有一个全局性方法require(),用于加载模块。假定有一个math.js模块，可以这样加载： var math=require('math');然后即可调用模块中的方法： math.add(2,3);
+	
+浏览器模块：
+
+	有了服务器端模块，很自然的向导客户端模块。
+	服务器端，所有的模块存放在本地硬盘中，可以同步加载完成，等待的时间就是硬盘的读取时间。对于浏览器，所有的模块存放在服务器中，读取速度取决于网速快慢。因此浏览器端模块不能采用“同步加载”，这种情境下产生AMD。
+	
+AMD
+	AMD(异步模块定义)，采用异步方式加载模块。
+	AMD也采用require()语句加载模块，不同于CommonJS ,要求两个参数：require([module],callback);第一个参数是需要加载模块的数组，第二个参数是加载成功后的毁掉函数。模块的加载和毁掉函数的执行不是同步的，所以不会假死。
+	
+	实现AMD规范的Javascript库有require.js和curl.js和curl.js
+
+  require.js
+
+	传统js文件加载：<script src="1.js"></script>
+					<script src="2.js"></script>
+					<script src="3.js"></script>
+					<script src="4.js"></script>
+	缺点：1.加载js文件的时候，浏览器会停止网页渲染，加载文件越多，网页市区响应时间越长；
+		  2.js文件存在依赖关系，必须严格保证加载顺序
+		  
+	require.js实现js文件异步加载，避免网页失去响应；管理模块的依赖性，便于编写和维护。
+	
+	使用：a. http://requirejs.org/docs/download.html下载最新版本require.js,假定存放在js文件的子目录
+		  b. 引用 <script src='js/require.js'></script>
+				加载这个文件也可能造成网页失去响应，所以可以把它放在网页底部；也可以<script src='js/require.js' defer async='true'></script>
+				async：文件异步加载，避免网页失去响应；IE不支持这个属性，只支持defer.
+	      c. 加载完require.js文件后，加载我们自己的js文件，假定main.js，在js子目录中。
+		         <script src='js/equire.js' data-main='js/main'></script>
+				 data-main属性：指定网页程序的主模块（整个网页的入口代码，所有代码从这开始运行），会第一个被require.js加载。require.js默认文件后缀名.js。
+				
+		主模块的写法：
+			a. 如果主模块不依赖其他模块，直接写js代码即可。
+			b. 主模块依赖其他模块时，需要使用require()函数。
+				// main.js
+				require(['moduleA','moduleB','moduleC'],function(moduleA,moduleB,moduleC){
+					//some code here
+				})
+				//加载的模块会以参数的形式传入回调函数，从而使在回调函数内部使用
+	
+			c. 定义模块的加载路径
+				使用require.config()方法，定义模块的加载路径。此方法写在主模块main.js头部。方法的参数是一个对象，此对象的path属性指定各个模块的加载路径。
+				（1）默认jquery.min.js、js1.js、js2.js文件都与main.js文件在同目录下
+				require.config({
+					path:{
+						"jquery":"jquery.min",
+						"js1":"js1",
+						"js2":"js2"
+					}
+				})
+				（2）假定这些模块在js/lib目录下；有两种写法：
+						aa. require.config({
+								path:{
+									"jquery":"lib/jquery.min",
+									"js1":"lib/js1",
+									"js2":"lib/js2"
+								}
+							})
+						bb. 改变基目录
+							require.config({
+								baseUrl:"js/lib",
+								path:{
+									"jquery":"jquery.min",
+									"js1":"js1",
+									"js2":"js2"
+								}
+							})
+				（3）模块在另一台主机上，可以直接制定网址
+							require.config({
+								baseUrl:"js/lib",
+								path:{
+									"jquery":"http//ajax.googleapis.com/ajax/jquery/1.7.2/jquery.min",
+							
+								}
+							})
+							
+	加载一个模块，需要http请求，多次发出请求，会印象王爷的加载速度。require,js提供了一个优化工具，将多个模块合并到一个文件中，减少http请求数。
+	http://requirejs.org/docs/optimization.html
+	
+  AMD模块的写法
+	require.js加载的模块，采用AMD规范，所以，模块必须按照AMD规定来写，即必须采用define()函数来定义。
+		(1)若此模块不依赖其他模块，可以直接定义在define()函数中，假定main.js文件
+			//main.js
+			define(function(){
+			
+				var add=function(x,y){
+					return x+y;
+				};
+				
+				return {
+					add:add
+				}
+			})
+			
+		加载main模块：
+			require(['math'],function(math){
+				此模块的代码；
+			})
+		(2)如果main模块还依赖其他模块，define（）函数第一个参数，必须是一个数组，指定依赖的模块
+			define(['myLib'],function(myLib){
+				var add=function(x,y){
+					return (x+y)*myLib.a
+				}
+			})
+			加载这一模块时，会首先加载myLib模块
+			
+	加载非AMD规范的模块
+		require.js加载的模块必须是按照AMD规范，用define()函数定义的模块。但一部分流行的库不符合AMD规范。
+		例如：underscore和backbone两个库，没有采用AMD规范写。加载之前需先用require.config()方法定义他们的特征。
+			require.config({
+				shhim:{
+					'underscore':{
+							exports:''
+					},
+					'backbone':{
+						deps:['underscore','jquery'],
+						exports:'Backbone'
+					}
+				}
+			})
+		require.config()接受一个配置对象，这个对象除了前面说过的paths属性外，还有一个shim属性，专门用来配置不兼容的模块。
+			shim属性的对象中非规范的模块定义，1.exports值，表明这个模块外部调用时的名称 2. deps数组，表明该模块的依赖。
+		
+   
+   require.js插件
+   
+		1.require.js提供一系列插件，实现特定功能。domready插件，让毁掉函数在DOM结构加载完成后再运行。
+		require(['domready!'],function(doc){
+			//called once the DOM is ready
+		})
+		
+		2.text和image插件，允许require.js加载文本和图片文件
+		require(['text!review.txt','image!cat.jpg'],function(review,cat){
+			console.log(review);
+			document.body.appendChild(cat);
+		})
+	

@@ -1,0 +1,44 @@
+1. 运行Javascript
+	直接在电脑硬盘上创建HTML和Javascript文件，用浏览器打开。这种方式以file://打开的地址，无法联网。还需架设一个web服务器，以http://开头的地址来执行javascript代码。
+2. 字符串	
+	a. 转义字符\可以转义很多字符，\n(换行)，\t(制表符)，\本身也要转义，所以\\（\）
+	
+	b. 多行字符串：
+			多行字符串用\n很繁琐，ES6新增了多行字符串的表示方法，用反引号``表示
+	c. 连接多个字符串：
+			（1）用+号；
+			（2）模板字符串，ES6新增的一种模板字符串，用反引号``包含字符串，字符串的变量用${变量}表示，会自动替换变量。
+				例如：var name=`小明`;
+					  var age=20;
+					  var message=`你好，${name},你今年${age}岁了！`
+					  alert(message)
+	d.操作字符串：
+			（1）.length字符串长度。    eg:  var s='hello world';
+										     alert(s.length)  //11
+			（2）[n]返回字符串第n个字母，从0开始计数。   eg: alert(s[0])//h
+		
+	e. 操作字符串的方法：
+			（1）.toUpperCase()把字符串全部变成大写。 eg:var s='hello';
+														alert(s.toUpperCase()); //HELLO		
+			（2）.toLowerCase()把字符串全部变成小写。
+			（3）.indexOf()指定返回的字符串在字符串中的位置，没有返回-1.  eg:var s='hello world';
+																			alert(s.indexOf('world'))//6
+			（4）.substring(a,b)返回[a,b)区间的字符串。 eg:alert(s.substring(7,8))//o
+3. 数组
+	jsvascript的Array可以包含任意数据类型，通过索引访问每个元素。
+	a. arr.langth 返回数组长度  eg: var arr=['one','two','three','four','five'];
+									alert(arr.length);//5
+		注意：直接给数组长度赋值，会导致数组改变长度。   eg:arr.length=3;
+															alert(arr)//['one','two','three']
+															alert(arr.length)//3
+	b. Array[n]=新值；Arry通过索引，把对应元素值改变，直接改变数组。
+		注意：通过索引赋值，如果索引值超过原数组的长度，数组长度改变为新赋值的长度。
+				eg:arr[7]='seven';
+				console.log(arr) //['one','two','three',empty*4,'seven']
+	c. 操作数组方法
+		（1）.indexOf(数组值) 返回数组值在数组中的索引值。 eg:alert(arr.indexOf('one')) //0
+		（2）.slice(a,b)截取数组的[a,b)区间的数组值，组成新的数组  eg:arr=['10','20','30','40','50'];
+																console.log(arr.slice(0,3));//['10','20','30']
+				注意：如果不传参数值，从零到未截取数组，相当于复制数组。
+		（3）.push()向数组末尾添加若干元素 .pop()删除数组末尾元素
+		（4）

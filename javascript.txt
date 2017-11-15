@@ -48,3 +48,36 @@
 																 arr.concar(['one','two'])//arr=['11','22','33','one','two']
 				注意：原数组不改变
 		（8）.join()将数组元素转换成字符串，用链接号链接成字符串，默认用‘,’链接，可指定链接号.join('-').
+4. 对象
+	Javascript对象是一种无序的若干键值对集合组成的数据类型；
+		对象的所有属性都是字符串，属性对应的值可以是任意数据类型。
+		Javascript对象是动态类型，可以添加和删除对象属性
+	{...}表示一个对象；
+	键值对以xxx:xxx形式声明，用‘，’隔开。最后一个键值对不需要‘，’，否则有可能报错。
+		a. eg: var xiaoming={
+			name:'小明'，
+			age：24；
+			birth:1993,
+			
+			}
+			访问属性是通过 . 操作符完成，但要求属性名必须是一个有效的变量名。
+		
+			获取属性：xiaoming.age  //24
+		
+		b.若属性名若包含特殊字符，必须用''括起来。
+			var xiaohua={
+				name:'小花'，
+				age：20，
+				'middle-school':'No1 middle school'
+			}
+			访问属性无法使用 . 操作符，必须用['xxx']访问。
+			xiaohua['middle-school'];// 'No1 middle school'
+		c. 增加、删除对象属性
+			xiaoming.school='No2 middle school'
+			delete xiaoming.age;
+		d. in 检测对象中的某一属性(对象集成==继承得到的属性，也可返回  eg:'toString' in xiaoming toString是定义在object中，所有对象最终都会指向object，所以xiaoming也有toString属性)  eg: 'age' in xiaoming //true
+				hasOwnProperty()判断是自身拥有属性，非继承  eg:xiaoming.hasOwnProperty('name')
+5. 条件判断
+	条件判断的结果不是true/false.Javascript把null、undefined、0、NaN和空字符串’‘视为false.
+		 
+		

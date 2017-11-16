@@ -79,5 +79,46 @@
 				hasOwnProperty()判断是自身拥有属性，非继承  eg:xiaoming.hasOwnProperty('name')
 5. 条件判断
 	条件判断的结果不是true/false.Javascript把null、undefined、0、NaN和空字符串’‘视为false.
+6. 循环
+	for循环(已知循环的初始条件和结束条件时非常有用)
+		循环的3个条件可以省略，省略后就没有退出循环的条件，就是死循环。可以用if条件判断使用break语句退出循环。
+		if条件判断使用continue只是跳出满足if条件的此次循环，然后继续执行下一次循环。
+	 for...in 循环（是for循环的一个变体）可以把一个对象的所有属性依次循环出
+		eg: var xiaoming={name:'小明',age:20,school:'No1 middle school'}
+			for(var key in xiaoming) {
+				console.log(key);  //name,age,school 
+				console.log(xiaoming[key])  //小明，20，No1 middle school
+			} 
+		数组也是对象，每个元素的索引视为对象的属性，for...in循环直接输出索引
+			eg: var arr=['first','twive','third'];
+				for(var key in arr){
+					console.log(key);  //0,1,2
+					console.log(arr[key]) //first,twive,third
+				}
+	while循环
+		满足条件循环
+	do...while循环
+7. Map和Set
+	javascript默认对象表示方式为{}，但键必须是字符串，实际上number和其他数据类型作为键也是非常合理的。于是ES6引入新的数据类型Map和Set.
+	
+	Map是一组键值对的结构，具有极快的查找速度。
+		初始化Map需要一个二维数组，或直接初始化一个空Map。
+		eg：var m=new Map([['micheal',95],['andrea',100],['json',80]]);
+		eg: var m=new Map();
+		
+		Map方法：m.set('adam',74);//添加一个新的键值
+				 m.has('adam');//查找是否存在‘adam’,true
+				 m.get('adam');//获取adam对应的值，74
+				 m.delete('adam');//删除‘adam’键
+				 
+	Set和Map类似，但只存储key不存储value,key值不能重复,重复元素会自动过滤。
+		创建Set需要一个Array作为输入，或直接创建一个空Set.
+		eg:var s=new Set([1,2,3,'3']);
+		   var s=new Set();
+		   
+		Set方法：s.add();//添加元素到Set中
+				 s.delete();//删除元素
+	
+	
 		 
 		

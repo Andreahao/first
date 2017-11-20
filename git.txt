@@ -68,7 +68,7 @@
 	c. github账户-->settings-->SSH Key-->将id_rsa.pub复制粘贴内容区-->添加SSH成功。
 
 2. 本地git仓库与github远程仓库关联
-	本地仓库运行命令 $ git remote add origin git@github.com:@Andreahao/learngit.git
+	本地仓库运行命令 $ git remote add origin 仓库地址（git@github.com:@Andreahao/learngit.git）
 	注意：如果报错，fatal:remote origin already exists.
 	(
 		<1>先输入 $ git remote rm origin
@@ -79,6 +79,12 @@
 3. 本地库内容推送到远程库
 	$ git push -u origin maser
 		(第一次推送master分支时，加上了-u参数，git不但会把本地的master分支内容推送给远程新的master分支，还会把本地master分支与远程的master分支关联起来。以后推送便不需)
+	注意：如果提示 git push --set-upstream origin master
+	(
+		则设置：git push --set-upstream origin master//设置默认提交为master->master
+				并设置master提交到master：git push --set-upstream origin master
+		
+	)
 		
 4. 从远程库克隆
 	找一仓库区，克隆并建本地库 $ git clone git@github.com:Andreahao/hello-word.git
